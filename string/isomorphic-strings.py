@@ -1,12 +1,17 @@
 class Solution:
     def isIsomorphic(self, s: str, t: str) -> bool:
-        return len(set(zip(s, t))) == len(set(s)) == len(set(t))
-        # s_map = {}
-        # t_map ={}
+        mapS = {}
+        mapT = {}
+        
 
-        # for i in range(len(s)):
-        #     s_map[s[i]] = s_map.get(s[i], 0) + 1
-        #     t_map[t[i]] = t_map.get(t[i], 0) + 1
+        for i in range(len(s)):
+            c1 = s[i]
+            c2 = t[i]
 
-        # return sorted(s_map.values()) == sorted(t_map.values())
+            if (c1 in mapS and mapS[c1] != c2) or c2 in mapT and mapT[c2] != c1:
+                return False
+            mapS[c1] = c2
+            mapT[c2] = c1
+        
+        return True
         
