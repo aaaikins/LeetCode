@@ -22,7 +22,7 @@ class Solution:
 
 # class Solution:
 #     def isHappy(self, n: int) -> bool:
-#         num = str(int(num[0])**2 + int(num[1])**2)
+#         num = str(n)
 #         total = 0
 #         i = 0
 #         while len(num) > 1:
