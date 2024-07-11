@@ -6,7 +6,7 @@ class Solution:
             local, domain = email.split("@")
             name = local.split("+")[0]
             name = name.replace('.','')
-            addresses.add((name, domain))
+            addresses.add(name+ "@" +domain)
         return len(addresses)
 
         
