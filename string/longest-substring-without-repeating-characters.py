@@ -9,11 +9,10 @@ class Solution:
 
         while j < len(s):
             visited.add(s[i])
-            maxLength = max(maxLength, len(visited))
             while s[j] in visited:
                 visited.remove(s[i])
                 i +=1
             visited.add(s[j])
-            maxLength = max(maxLength, j - i + 1)
+            maxLength = max(maxLength, len(visited))
             j += 1
         return maxLength
