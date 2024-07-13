@@ -13,5 +13,5 @@ class Solution:
         if not nums:
             return 0
         else:
-            return -heapq.heappop(nums)
+            return -heappop(nums)
         
