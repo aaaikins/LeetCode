@@ -1,8 +1,17 @@
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
-        s = sorted(s)
-        t = sorted(t)
-        if s == t:
-            return True
-        return False
+        mapS = {}
+        mapT = {}
+
+        if len(s) != len(t):
+            return False
+
+        for i in range(len(s)):
+            mapS[s[i]] = mapS.get(s[i], 0) + 1
+            mapT[t[i]] = mapT.get(t[i], 0) + 1
+        
+        return mapS == mapT
+
+
+
         
