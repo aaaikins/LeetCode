@@ -25,4 +25,4 @@ class Solution:
                     queue.append(curNode.right)
                 level.append(curNode.val)
             res.append(level)
-        return reversed(res)
+        return res[::-1]
