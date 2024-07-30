@@ -23,4 +23,3 @@ class Solution:
             return good
         
         return dfs(root, root.val)
-        
