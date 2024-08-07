@@ -6,13 +6,11 @@ class Solution(object):
         :rtype: List[int]
         """
         hashmap = {}
-        for i in range(len(nums)):
-            x = nums[i]
-            diff = target - x
+
+        for i, num in enumerate(nums):
+            
+            diff = target - num
             if diff in hashmap:
                 return [hashmap[diff], i]
-            else:
-                hashmap[x] = i
-                
-
+            hashmap[num] = i
         
