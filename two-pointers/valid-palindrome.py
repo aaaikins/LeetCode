@@ -4,7 +4,7 @@ class Solution(object):
         :type s: str
         :rtype: bool
         """
-        s = [word.lower() for word in s if word.isalnum()]
+        s = [word for word in s.lower() if word.isalnum()]
         
         l = 0
         r = len(s) - 1
