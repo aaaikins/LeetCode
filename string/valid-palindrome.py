@@ -9,7 +9,7 @@ class Solution(object):
         l = 0
         r = len(s) - 1
 
-        while l < r:
+        while l <= r:
             if s[l] != s[r]:
                 return False
             l += 1
