@@ -8,9 +8,9 @@ class Solution(object):
             return intervals
         intervals.sort()
         merge = [intervals[0]]
-        for start, end in intervals[1:]:
+        for start, end in intervals:
             lastEnd = merge[-1][1]
-            if start <= lastEnd:
+            if merge and start <= lastEnd:
                 merge[-1][1] = max(end, lastEnd)
             else:
                 merge.append([start, end])
