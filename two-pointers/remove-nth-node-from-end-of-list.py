@@ -8,12 +8,11 @@ class Solution:
         if not head:
             return
 
-        dummy = ListNode(next=head)
-        slow = dummy
+        temp = ListNode(next=head)
+        slow = temp
         fast = head
 
         for i in range(n):
-            temp = fast
             fast = fast.next
             
         
@@ -25,5 +24,5 @@ class Solution:
  
        
 
-        return dummy.next
+        return temp.next
         
