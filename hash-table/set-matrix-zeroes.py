@@ -3,17 +3,16 @@ class Solution:
         """
         Do not return anything, modify matrix in-place instead.
         """
-        zeros = set()
+        zeros = []
         row = len(matrix)
         col = len(matrix[0])
+
         for r in range(row):
             for c in range(col):
                 if matrix[r][c] == 0:
-                    zeros.add((r,c))
+                    zeros.append((r,c))
 
-        for pos in zeros:
-            zero_row, zero_col = pos
-
+        for zero_row, zero_col in zeros:
             for r in range(row):
                 matrix[r][zero_col] = 0
 
