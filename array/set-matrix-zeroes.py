@@ -20,6 +20,4 @@ class Solution:
             for c in range(col):
                 matrix[zero_row][c] = 0
 
-        return matrix
-
         
