@@ -4,28 +4,29 @@ class Solution:
         top, bottom = 0, len(matrix)
         res = []
         
-        while left < right and top < bottom: 
+        while (left < right and top < bottom): 
 
-            for l in range(left, right):
-                res.append(matrix[top][l])
+            for i in range(left, right):
+                res.append(matrix[top][i])
             top += 1
             # print(res)
 
-            for t in range(top, bottom):
-                res.append(matrix[t][right-1])
+            for i in range(top, bottom):
+                res.append(matrix[i][right-1])
             right -= 1
             # print(res)
 
-            for r in range(right -1, -1, -1):
-                res.append(matrix[bottom -1][r])
+            if not (left < right and top < bottom):
+                break
+
+            for i in range(right-1, left-1, -1):
+                res.append(matrix[bottom -1][i])
             bottom -= 1
             # print(res)
             
-            for c in range(left, right):
-                res.append(matrix[bottom-1][c])
-
-            if left <= right and top <= bottom:
-                break
+            for i in range(bottom - 1, top -1, -1):
+                res.append(matrix[i][left])
+            left += 1
 
 
         return res
