@@ -1,15 +1,14 @@
 class Solution:
-    def productExceptSelf(self, nums: List[int]) -> List[int]:
-        iteration = 0 
-        res = []
-        prod = 1
-        while iteration < len(nums):
-            for idx, num in enumerate(nums):
-                if idx != iteration:
-                    prod = prod * num
-            
-            res.append(prod)
-            prod = 1
-            iteration +=1
+    def productExceptSelf(self, nums: List[int]) -> List:
+        res = [1] * (len (nums))
+        prefix = 1
+        for i in range(len (nums)) :
+            res[i] = prefix
+            prefix *= nums[i]
+        print(res)
+        postfix = 1
+        for i in range(len (nums) - 1, -1, -1):
+            res[i] *= postfix 
+            postfix *= nums[i]
+            print(res)
         return res
-        
