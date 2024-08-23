@@ -5,31 +5,22 @@
 #         self.next = next
 class Solution:
     def doubleIt(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        def reverse(node):
-            prev = None
-            cur = node
-
-            while cur:
-                temp = cur.next
-                cur.next = prev
-                prev = cur
-                cur = temp
-                
-            return prev
-
-        reverse_list = reverse(head)
-        node = reverse_list
+        num = 0
+        current = head
+        while current:
+            num = num * 10 + current.val
+            current = current.next
         
-        carry = 0
-        while node:
-            current_double = node.val * 2 + carry
-            node.val = current_double % 10
-            carry = current_double // 10
-            if not node.next and carry:
-                node.next = ListNode(carry)
-                break
-                
-            node = node.next
+        # Step 2: Double the integer
+        num *= 2
         
-        return reverse(reverse_list)
+        # Step 3: Convert the doubled number back to a linked list
+        dummy = ListNode(0)
+        current = dummy
+        for digit in str(num):
+            current.next = ListNode(int(digit))
+            current = current.next
+        
+        # Step 4: Return the new linked list
+        return dummy.next
       
