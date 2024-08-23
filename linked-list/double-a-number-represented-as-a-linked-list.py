@@ -5,22 +5,32 @@
 #         self.next = next
 class Solution:
     def doubleIt(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        temp = head
-        num = ""
-        
-        while temp:
-            num += str(temp.val)
-            temp = temp.next
 
-        temp_sum = str(2 * int(num))
-        print(temp_sum)
-        
-        result = ListNode(0)
-        temp = result
+        def reverse(node):
+            prev = None
+            cur = node
 
-        for char in temp_sum:
-            result.next = ListNode(int(char))
-            result = result.next
+            while cur:
+                temp = cur.next
+                cur.next = prev
+                prev = cur
+                cur = temp
+                
+            return prev
 
-        return temp.next
+        reverse_list = reverse(head)
+        node = reverse_list
+        carry = 0
+        while node:
+            current_double = node.val * 2 + carry
+            node.val = current_double % 10
+            carry = current_double // 10
+            prev = node
+            node = node.next
+
+        if carry > 0:
+            prev.next = ListNode(carry)
+        print(reverse_list)
+        double_list = reverse(reverse_list)
+        return double_list
       
