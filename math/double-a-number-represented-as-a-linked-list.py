@@ -5,15 +5,21 @@
 #         self.next = next
 class Solution:
     def doubleIt(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        prev, node = None, head
+        def reverse(node):
+            prev = None
+            cur = node
 
-        while node:
-            next_temp = node.next
-            node.next = prev
-            prev, node = node, next_temp
-        head = prev
+            while cur:
+                temp = cur.next
+                cur.next = prev
+                prev = cur
+                cur = temp
+                
+            return prev
 
-        node = head
+        reverse_list = reverse(head)
+        node = reverse_list
+        
         carry = 0
         while node:
             current_double = node.val * 2 + carry
@@ -24,11 +30,6 @@ class Solution:
 
         if carry > 0:
             prev.next = ListNode(carry)
-
-        prev, node = None, head
-        while node:
-            next_temp = node.next
-            node.next = prev
-            prev, node = node, next_temp
-
-        return prev
+        
+        return reverse(reverse_list)
+      
