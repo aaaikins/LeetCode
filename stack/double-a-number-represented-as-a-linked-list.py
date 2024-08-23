@@ -25,11 +25,11 @@ class Solution:
             current_double = node.val * 2 + carry
             node.val = current_double % 10
             carry = current_double // 10
-            prev = node
+            if not node.next and carry:
+                node.next = ListNode(carry)
+                break
+                
             node = node.next
-
-        if carry > 0:
-            prev.next = ListNode(carry)
         
         return reverse(reverse_list)
       
