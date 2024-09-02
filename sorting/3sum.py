@@ -3,10 +3,10 @@ class Solution:
         nums.sort()
         res = []
         for i, a in enumerate(nums):
-            if a > 0:
-                break
-            if i > 0 and nums[i-1] == a:
-                continue
+            # if a > 0:
+            #     break
+            # if i > 0 and nums[i-1] == a:
+            #     continue
 
             l, r = i + 1, len(nums) - 1
             while l < r:
