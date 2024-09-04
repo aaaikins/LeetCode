@@ -5,8 +5,8 @@ class Solution:
 
         while start <= end:
             mid = (start+end) // 2
-            
-            if nums[mid + 1] < nums[mid]:
+
+            if nums[mid + 1] < nums[mid] and mid + 1 <= end:
                 res = min(res, nums[mid + 1])
             
             if nums[mid] < nums[mid - 1]:
