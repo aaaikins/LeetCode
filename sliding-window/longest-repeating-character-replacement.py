@@ -3,6 +3,7 @@ class Solution:
         count = {}
         l = 0
         maxFreq = 0
+        maxLen = 0
         for r, char in enumerate(s):
             count[char] = 1 + count.get(char, 0)
 
@@ -11,6 +12,6 @@ class Solution:
             if (r-l+1) - maxFreq > k:
                 count[s[l]] -= 1
                 l += 1
-        
-        return r-l+1
+            maxLen = max(maxLen, r-l+1)
+        return maxLen
         
