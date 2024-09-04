@@ -2,8 +2,8 @@ class Solution:
     def search(self, nums: List[int], target: int) -> int:
         start = 0
         end = len(nums) - 1
-        if nums == []:
-            return -1
+        # if nums == []:
+        #     return -1
 
         while start <= end:
             mid = (start+end) // 2
