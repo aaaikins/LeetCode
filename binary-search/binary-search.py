@@ -5,7 +5,7 @@ class Solution:
         # if nums == []:
         #     return -1
 
-        while start < end:
+        while start <= end:
             mid = (start+end) // 2
             if target > nums[mid]:
                 start = mid + 1
