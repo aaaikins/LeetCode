@@ -9,7 +9,7 @@ class Solution:
             if mid + 1 <= end and nums[mid + 1] < nums[mid]:
                 res = min(res, nums[mid + 1])
             
-            if nums[mid] < nums[mid - 1]:
+            if mid - 1 >= start and nums[mid] < nums[mid - 1]:
                 res = min(res, nums[mid])
             
             if nums[end] > nums[mid]:
