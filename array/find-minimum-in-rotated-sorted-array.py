@@ -9,10 +9,10 @@ class Solution:
 
             if nums[end] < nums[mid]:
                 start = mid + 1
-                # res = min(res, nums[start])
+                res = min(res, nums[start])
             else:
                 end = mid - 1
-                # res = min(res, nums[end])
+                res = min(res, nums[end])
 
         return res
         
