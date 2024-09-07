@@ -10,13 +10,13 @@ class Solution:
         listA=headA
         
         while listA:
-            setA.add(listA.val)
+            setA.add(listA)
             listA=listA.next
         
         listB = headB
         while listB:
             
-            if listB.val in setA:
+            if listB in setA:
                 return listB
             listB=listB.next
 
