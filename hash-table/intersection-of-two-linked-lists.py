@@ -6,26 +6,18 @@
 
 class Solution:
     def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> Optional[ListNode]:
-        tempA = headA
-        tempB = headB
-        listA = []
-        # intersection = None
-
-        while tempA:
-            listA.append(tempA.val)
-            tempA = tempA.next
+        setA=set()
+        listA=headA
         
-        listA = listA[::-1]
-
-        while tempB:
-            if tempB.val in listA:
-                return tempB
-            tempB = tempB.next
-
+        while listA:
+            setA.add(listA.val)
+            listA=listA.next
         
+        listB = headB
+        while listB:
+            
+            if listB.val in setA:
+                return listB
+            listB=listB.next
+
         return None
-
-            
-            
-
-        
