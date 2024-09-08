@@ -16,9 +16,9 @@ class Solution:
             r = check_height(node.right)
 
             
-            res = l + r
+            res = max(res, l + r)
             
-            return max(r, l) + 1
+            return max(r,l) + 1
         
         res = 0
         check_height(root)
