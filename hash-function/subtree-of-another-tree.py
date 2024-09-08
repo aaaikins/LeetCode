@@ -10,6 +10,8 @@ class Solution:
             return True
         if not root:
             return False
+        if not subRoot:
+            return True
 
         return self.isSubtree(root.left, subRoot) or self.isSubtree(root.right, subRoot)
 
