@@ -11,6 +11,6 @@ class Solution:
         if root.val == subRoot.val:
             return True
 
-        return self.isSubtree(root.left, subRoot) and self.isSubtree(root.right, subRoot)
+        return self.isSubtree(root.left, subRoot) or self.isSubtree(root.right, subRoot)
 
         
