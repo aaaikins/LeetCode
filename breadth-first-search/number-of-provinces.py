@@ -14,7 +14,7 @@ class Solution:
                 return
 
             visit.add((r, c))
-            directions = [[0, 1], [0, -1], [1, 0], [-1, 0]]
+            directions = [[0, 1], [1, 0]]
             for dr, dc in directions:
                 dfs(r + dr, c + dc)
 
