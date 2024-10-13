@@ -2,17 +2,20 @@ class Solution:
     def findCircleNum(self, isConnected: List[List[int]]) -> int:
         provinces = 0
         visit = set()
-        n = len(isConnected)
-        def dfs(start):
-            visit.add(start)
-            for end in range(n):
-                if isConnected[start][end] and end not in visit:
-                    dfs(end)
+        rows = len(isConnected)
 
-        for start in range(n):
-            if start not in visit:
+        def dfs(city):
+            for neighbor in range(rows):
+                if isConnected[city][neighbor] == 1 and neighbor not in visit:
+                    visit.add(neighbor)
+                    dfs(neighbor)
+
+        for city in range(rows):
+            if city not in visit:
                 provinces += 1
-                dfs(start)
+                visit.add(city)
+                dfs(city)
 
         return provinces
+
         
