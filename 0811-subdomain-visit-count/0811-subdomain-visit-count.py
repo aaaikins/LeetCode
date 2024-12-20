@@ -8,7 +8,7 @@ class Solution:
             print(hashmap)
             # if len(subdomains) == 1:
             #     hashmap[subdomains] = hashmap.get(subdomains, 0) + int(count)
-            for i, s in enumerate(subdomains):
+            for i in range(len(subdomains)):
                 subdomain = ".".join(subdomains[i:])
                 hashmap[subdomain] = hashmap.get(subdomain, 0) + int(count)
         res = []
