@@ -4,12 +4,11 @@ class Solution:
             l, r = 0, len(nums)-1
             idx = -1
             
-
             while l <= r:
                 m = (l+r)//2
                 if nums[m] == target:
                     idx = m
-                    if not searchLeft:
+                    if searchLeft:
                         r = m - 1
                     else:
                         l = m + 1
@@ -19,23 +18,8 @@ class Solution:
                     r = m - 1
             return idx
 
-        # def findLast(nums, target):
-        #     l, r = 0, len(nums)-1
-        #     last = -1
-
-        #     while l <= r:
-        #         m = (l+r)//2
-        #         if nums[m] == target:
-        #             last = m
-        #             l = m + 1
-        #         elif nums[m] < target:
-        #             l = m + 1
-        #         else:
-        #             r = m - 1
-        #     return last
-
-        first = binSearch(nums, target)
-        last = binSearch(nums, target, True)
+        first = binSearch(nums, target, True)
+        last = binSearch(nums, target)
         return [first, last]
 
         
