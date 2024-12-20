@@ -1,37 +1,41 @@
 class Solution:
     def searchRange(self, nums: List[int], target: int) -> List[int]:
-        def findFirst(nums, target):
+        def binSearch(nums, target, searchLeft=False):
             l, r = 0, len(nums)-1
-            first = -1
+            idx = -1
+            
 
             while l <= r:
                 m = (l+r)//2
                 if nums[m] == target:
-                    first = m
-                    r = m - 1
+                    idx = m
+                    if not searchLeft:
+                        r = m - 1
+                    else:
+                        l = m + 1
                 elif nums[m] < target:
                     l = m + 1
                 else:
                     r = m - 1
-            return first
+            return idx
 
-        def findLast(nums, target):
-            l, r = 0, len(nums)-1
-            last = -1
+        # def findLast(nums, target):
+        #     l, r = 0, len(nums)-1
+        #     last = -1
 
-            while l <= r:
-                m = (l+r)//2
-                if nums[m] == target:
-                    last = m
-                    l = m + 1
-                elif nums[m] < target:
-                    l = m + 1
-                else:
-                    r = m - 1
-            return last
+        #     while l <= r:
+        #         m = (l+r)//2
+        #         if nums[m] == target:
+        #             last = m
+        #             l = m + 1
+        #         elif nums[m] < target:
+        #             l = m + 1
+        #         else:
+        #             r = m - 1
+        #     return last
 
-        first = findFirst(nums, target)
-        last = findLast(nums, target)
+        first = binSearch(nums, target)
+        last = binSearch(nums, target, True)
         return [first, last]
 
         
