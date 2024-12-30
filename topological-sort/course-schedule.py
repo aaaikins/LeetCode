@@ -12,10 +12,12 @@ class Solution:
                 return False
             if crs not in visited:
                 return True
-            
+
+            visited.add(crs)
             for pre in courseMap[crs]:
                 if not dfs(pre):
                     return False
+            visited.remove(crs)
             return True
 
         for course in courseMap:
