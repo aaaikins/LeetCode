@@ -10,6 +10,8 @@ class Solution:
                 top = stack.pop()
                 if mapping[s[i]] != top:
                     return False
+                else:
+                    continue
             else:
                 stack.append(s[i])
 
