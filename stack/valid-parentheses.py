@@ -1,20 +1,22 @@
-class Solution(object):
-    def isValid(self, s):
-        """
-        :type s: str
-        :rtype: bool
-        """
-        brackets = {')':'(', '}':'{', ']':'['}
-        stack = []
-        for i in s:
-            if stack and i in brackets:
-                cur = stack.pop()
-                if cur != brackets[i]:
-                    return False
-            else:
-                stack.append(i)
-            
+class Solution:
+    def isValid(self, s: str) -> bool:
+        mapping = {')':'(', '}':'{', ']':'['}
 
-        return len(stack) == 0
-            
+        stack = []
+
+        for i in range(len(s)):
+            print(stack)
+            if stack and s[i] in mapping:
+                top = stack.pop()
+                if mapping[s[i]] != top:
+                    return False
+                # else:
+                #     continue
+            else:
+                stack.append(s[i])
+
+            # print(stack)
+
+        return True
+        
         
