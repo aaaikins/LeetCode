@@ -4,7 +4,7 @@ class Twitter:
 
     def __init__(self):
         self.tweets = defaultdict(list)
-        self.following = defaultdict(list)
+        self.following = defaultdict(set)
         self.timestamp = 0
 
     def postTweet(self, userId: int, tweetId: int) -> None:
@@ -28,7 +28,7 @@ class Twitter:
 
     def follow(self, followerId: int, followeeId: int) -> None:
         if followerId != followeeId:
-            self.following[followerId].append(followeeId)
+            self.following[followerId].add(followeeId)
 
     def unfollow(self, followerId: int, followeeId: int) -> None:
         if followeeId in self.following[followerId]:
