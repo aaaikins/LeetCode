@@ -1,41 +1,39 @@
 class Twitter:
-
     def __init__(self):
         self.tweets = defaultdict(list)
-        self.users = defaultdict(list)
-        # self.feed = []
+        self.following = defaultdict(set)
+        self.timestamp = 0
 
     def postTweet(self, userId: int, tweetId: int) -> None:
-        self.tweets[userId].append(tweetId)
-        # self.feed.append(tweetId)
+        self.tweets[userId].append((self.timestamp, tweetId))
+        self.timestamp -= 1
 
     def getNewsFeed(self, userId: int) -> List[int]:
-        res = []
-        for user in self.users[userId]:
-            for tweet in self.tweets[user]:
-                res.append(tweet)
-        res.extend(self.tweets[userId])
-        # self.feed.reverse()
-        return res
+        heap = []
+
+        # Add user's own tweets
+        for tweet in self.tweets[userId]:
+            heapq.heappush(heap, tweet)
+            if len(heap) > 10:
+                heapq.heappop(heap)
+
+        # Add tweets from followees
+        for followee in self.following[userId]:
+            for tweet in self.tweets[followee]:
+                heapq.heappush(heap, tweet)
+                if len(heap) > 10:
+                    heapq.heappop(heap)
+
+        # Return tweets sorted by most recent
+        return [tweetId for (_, tweetId) in heap]
 
     def follow(self, followerId: int, followeeId: int) -> None:
-        # self.users[followeeId].append(followerId)
-        self.users[followerId].append(followeeId)
-        print("follow")
-        print(self.users)
-        print(self.tweets)
-
+        if followerId != followeeId:
+            self.following[followerId].add(followeeId)
 
     def unfollow(self, followerId: int, followeeId: int) -> None:
-        # if self.users[followeeId]:
-        #     self.feed.remove(self.tweets[followeeId])
-        #     self.users[followeeId].remove(followerId)
-        #     heappop(self.tweets[followeeId])
-        # self.users[followeeId].remove(followerId)
-        self.users[followerId].remove(followeeId)
-        print("unfollow")
-        print(self.users)
-        print(self.tweets)
+        if followeeId in self.following[followerId]:
+            self.following[followerId].remove(followeeId)
 
 
 # Your Twitter object will be instantiated and called as such:
