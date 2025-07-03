@@ -9,7 +9,7 @@ class Solution:
             if product == num:
                 return True
 
-            if product < num:
+            elif product < num:
                 l = mid + 1
             else:
                 r = mid - 1
