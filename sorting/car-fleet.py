@@ -4,10 +4,8 @@ class Solution:
         stack = []
         
         for pos, spd in cars:
-            time = (target - pos) // spd
+            time = (target - pos) / spd
             if not stack or time > stack[-1]:
                 stack.append(time)
-            else:
-                continue
-        print(stack)
+
         return len(stack)
