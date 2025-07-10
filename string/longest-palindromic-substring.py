@@ -20,6 +20,7 @@ class Solution:
                 if isPalindrome(s[l:r+1]):
                     if (r-l+1) > len(maxStr):
                         maxStr = s[l:r+1]
+
             l += 1
             r -= 1
 
