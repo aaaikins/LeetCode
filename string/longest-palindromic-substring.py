@@ -1,28 +1,21 @@
 class Solution:
     def longestPalindrome(self, s: str) -> str:
-
-        def isPalindrome(s):
-            l, r = 0, len(s) - 1
-
-            while l < r:
-                if s[l] != s[r]:
-                    return False
-                else:
-                    l +=1
-                    r -= 1
-            return True
-        l, r = 0, len(s) - 1
-        # print(isPalindrome(s[l:r+1]))
+        def expandAroundCenter(left: int, right: int) -> str:
+            while left >= 0 and right < len(s) and s[left] == s[right]:
+                left -= 1
+                right += 1
+            return s[left+1:right]  # slice after breaking condition
 
         maxStr = ''
-        while l <= r:
-            if s[l] == s[r]:
-                if isPalindrome(s[l:r+1]):
-                    if (r-l+1) > len(maxStr):
-                        maxStr = s[l:r+1]
+        for i in range(len(s)):
+            # Odd length palindrome
+            odd = expandAroundCenter(i, i)
+            if len(odd) > len(maxStr):
+                maxStr = odd
 
-            l += 1
-            r -= 1
+            # Even length palindrome
+            even = expandAroundCenter(i, i + 1)
+            if len(even) > len(maxStr):
+                maxStr = even
 
         return maxStr
-        
