@@ -45,7 +45,9 @@ class Solution:
             elif n == candidate2:
                 count2 += 1
         
-        if count1 == count2:
-            return min(candidate1, candidate2)
+        if count1 > count2:
+            return candidate1
+        elif count1 < count2:
+            return candidate2
         else:
-            return max(candidate1, candidate2)
+            return min(candidate1, candidate2)
