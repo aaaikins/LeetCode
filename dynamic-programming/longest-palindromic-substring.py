@@ -15,7 +15,7 @@ class Solution:
         # print(isPalindrome(s[l:r+1]))
 
         maxStr = ''
-        while l < r:
+        while l <= r:
             if s[l] == s[r]:
                 if isPalindrome(s[l:r+1]):
                     if (r-l+1) > len(maxStr):
