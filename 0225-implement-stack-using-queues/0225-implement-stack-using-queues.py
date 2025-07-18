@@ -6,6 +6,7 @@ class MyStack:
 
     def push(self, x: int) -> None:
         self.q.append(x)
+        self.q.rotate(len(self.q))
 
     def pop(self) -> int:
         return self.q.pop()
