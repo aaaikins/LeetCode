@@ -6,6 +6,7 @@ class MyStack:
 
     def push(self, x: int) -> None:
         self.q.append(x)
+        self.q.rotate(len(self.q))
 
     def pop(self) -> int:
         return self.q.pop()
@@ -14,7 +15,7 @@ class MyStack:
         return self.q[-1]
 
     def empty(self) -> bool:
-        return self.q == []
+        return self.q == deque([])
 
 
 # Your MyStack object will be instantiated and called as such:
