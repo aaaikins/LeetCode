@@ -7,10 +7,10 @@ class Solution:
 
             if nums[mid] == target:
                 return mid
-            elif nums[mid] > target:
-                r = mid - 1
+            elif nums[mid] < target:
+                l += 1
             else:
-                l = mid + 1
+                r -= 1
         
         return -1
         
