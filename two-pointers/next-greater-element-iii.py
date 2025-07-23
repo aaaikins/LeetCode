@@ -1,6 +1,10 @@
 class Solution:
     def nextGreaterElement(self, n: int) -> int:
-        new_int = int(str(n)[::-1])
+        new_n = sorted(str(n), reverse=True)
+        new_n = "".join(new_n)
+        new_n = int(new_n)
+        print(new_n)
 
-        return new_int if new_int > n else -1
+        return new_n if new_n > n else -1
+        # return 
         
