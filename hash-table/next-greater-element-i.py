@@ -4,7 +4,7 @@ class Solution:
         stack = []
 
         for num in nums2:
-            if stack and num > stack[-1]:
+            while stack and num > stack[-1]:
                 prev = stack.pop()
                 next_greater[prev] = num
             stack.append(num)
