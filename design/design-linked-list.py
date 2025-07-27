@@ -70,23 +70,31 @@ class MyLinkedList:
             
             temp.next = new_node
             
-        self.length += 1
+            self.length += 1
 
     def deleteAtIndex(self, index: int) -> None:
         if index < 0 or index >= self.length:
             return
         if index == 0:
-            self.head = self.head.next
-            self.head.prev = None
+            if self.length == 1:
+                self.head = None
+                self.tail = None
+            else:
+                self.head = self.head.next
+                self.head.prev = None
         elif index == self.length - 1:
             self.tail = self.tail.prev
-            self.tail.next = None
+
+            if self.tail:
+                self.tail.next = None
         else:
             temp = self.head
-            for _ in range(index - 2):
+            for _ in range(index):
                 temp = temp.next
 
-            temp.next = temp.next.next
+            temp.prev.next = temp.next
+            temp.next.prev = temp.prev
+            
         self.length -= 1
         
 
