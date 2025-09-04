@@ -15,7 +15,8 @@ class Solution:
             left = dfs(node.left)
             right = dfs(node.right)
 
-            self.isBalanced = abs(left - right) <= 1
+            if abs(left - right) > 1:
+                self.isBalanced = False
 
             return 1 + max(left, right)
 
