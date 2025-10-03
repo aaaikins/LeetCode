@@ -3,8 +3,7 @@ class Solution:
         new_n = sorted(str(n), reverse=True)
         new_n = "".join(new_n)
         new_n = int(new_n)
-        print(new_n)
-
+        
         return new_n if new_n > n else -1
         # return 
         
