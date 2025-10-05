@@ -1,28 +1,32 @@
 class Solution:
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
-        courseMap = defaultdict(list)
+        graph = {i:[] for i in range(numCourses)}
+        in_degree = [0] * numCourses
 
-        for course, prereq in prerequisites:
-            courseMap[course].append(prereq)
+        for crs, pre in prerequisites:
+            graph[pre].append(crs)
+            in_degree[crs] += 1
+                
+        queue = deque([i for i in range(numCourses) if in_degree[i] == 0])
+        
+        visited_count = 0
 
-        visited = set()
+        while queue:
+            cur = queue.popleft()
+            visited_count += 1
 
-        def dfs(crs):
-            if crs in visited: 
-                return False
-            if crs not in visited:
-                return True
+            for csr in graph[cur]:
+                in_degree[csr] -= 1
 
-            visited.add(crs)
-            for pre in courseMap[crs]:
-                if not dfs(pre):
-                    return False
-            visited.remove(crs)
-            return True
+                if in_degree[csr] == 0:
+                    queue.append(csr)
 
-        for course in courseMap:
-            if not dfs(course):
-                return False
-        return True
+        return visited_count == numCourses
+
 
         
+
+        # print(graph)
+        # print(queue)
+
+        # return True
