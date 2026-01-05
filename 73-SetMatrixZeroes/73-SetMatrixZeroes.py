@@ -1,4 +1,4 @@
-# Last updated: 1/5/2026, 3:41:37 PM
+# Last updated: 1/5/2026, 3:41:58 PM
 1class Solution:
 2    def setZeroes(self, matrix: List[List[int]]) -> None:
 3        nRows = len(matrix)
@@ -20,22 +20,19 @@
 19            for c in range(nCols):
 20                if matrix[r][c] == 0:
 21                    matrix[0][c] = 0
-22                    # if r > 0:
-23                    matrix[r][0] = 0
-24                    # else:
-25                    #     rowZero = True
-26
-27        for r in range(1, nRows):
-28            for c in range(1, nCols):
-29                if matrix[r][0] == 0 or matrix[0][c] == 0:
-30                    matrix[r][c] = 0
-31
-32        # Fix: only zero first column if needed
-33        if colZero:
-34            for r in range(nRows):
-35                matrix[r][0] = 0
-36
-37        if rowZero:
-38            for c in range(nCols):
-39                matrix[0][c] = 0
-40
+22                    matrix[r][0] = 0
+23
+24        for r in range(1, nRows):
+25            for c in range(1, nCols):
+26                if matrix[r][0] == 0 or matrix[0][c] == 0:
+27                    matrix[r][c] = 0
+28
+29        # Fix: only zero first column if needed
+30        if colZero:
+31            for r in range(nRows):
+32                matrix[r][0] = 0
+33
+34        if rowZero:
+35            for c in range(nCols):
+36                matrix[0][c] = 0
+37
