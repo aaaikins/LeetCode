@@ -1,4 +1,4 @@
-# Last updated: 9/21/2026, 7:37:40 PM
+# Last updated: 9/21/2026, 7:38:02 PM
 1class Solution:
 2    def rearrangeBarcodes(self, barcodes: list[int]) -> list[int]:
 3        count = Counter(barcodes)
@@ -8,9 +8,9 @@
 7        prev = None
 8
 9        while maxHeap or prev:
-10            if prev and not maxHeap:
-11                return ""
-12            # print(maxHeap)
+10            # if prev and not maxHeap:
+11            #     return ""
+12
 13            if maxHeap:
 14                cnt, code = heappop(maxHeap)
 15                res.append(code)
