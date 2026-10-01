@@ -1,42 +1,18 @@
-# Last updated: 7/29/2026, 8:31:36 PM
+# Last updated: 10/1/2026, 4:07:40 PM
 1class Solution:
 2    def isValid(self, s: str) -> bool:
-3        """
-4        mapping = { ")": "(", "}": "{", "]":"["}
-5       
-6       s = "([])"
-7
-8        stack = [(, ]
-9        for c in s:
-10            if stack and c in mapping:
-11                top = stack[-1]
-12                if top == mapping[c]: 
-13                    stack.pop()
-14                else:
-15                    return False
-16            else:
-17                stack.append(c)
-18
-19        return len(stack) == 0
-20
-21        """
-22        
-23        mapping = { ")": "(", "}": "{", "]":"["}
-24
-25        stack = []
-26        for c in s:
-27            if stack and  c in mapping:
-28                top = stack[-1]
-29                if top == mapping[c]:
-30                    stack.pop()
-31                else: 
-32                    return False
-33            
-34            else:
-35                stack.append(c)
-36            
-37        return len(stack) == 0
-38
-39
-40
-41
+3        bracketsMap = {")": "(", "}":"{", "]":"["}
+4        stack = []
+5
+6        for ch in s:
+7            if ch in bracketsMap:
+8                if stack:
+9                    top = stack.pop()
+10                    if top != bracketsMap[ch]:
+11                        return False
+12                else:
+13                    stack.append(ch)
+14            else:
+15                stack.append(ch)
+16        
+17        return len(stack) == 0
