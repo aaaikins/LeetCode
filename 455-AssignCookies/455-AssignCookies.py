@@ -1,4 +1,4 @@
-# Last updated: 10/15/2026, 5:33:57 PM
+# Last updated: 10/15/2026, 5:34:52 PM
 1class Solution:
 2    def findContentChildren(self, g: list[int], s: list[int]) -> int:
 3        g.sort()
@@ -15,9 +15,6 @@
 14                i += 1
 15            else:
 16                j += 1
-17        # print(g)
-18        # print(s)
-19            # j += 1
-20            # i += 1
-21        
-22        return content
+17
+18        
+19        return content
