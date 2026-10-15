@@ -1,4 +1,4 @@
-# Last updated: 10/15/2026, 5:34:52 PM
+# Last updated: 10/15/2026, 5:51:22 PM
 1class Solution:
 2    def findContentChildren(self, g: list[int], s: list[int]) -> int:
 3        g.sort()
@@ -7,14 +7,10 @@
 6        content = 0
 7
 8        while i < len(g) and j < len(s):
-9            # print('i', i)
-10            # print('j', j)
-11            if s[j] >= g[i]:
-12                content += 1
-13                j += 1
-14                i += 1
-15            else:
-16                j += 1
-17
-18        
-19        return content
+9            if s[j] >= g[i]:
+10                content += 1
+11                i += 1
+12            j += 1
+13
+14        
+15        return content
